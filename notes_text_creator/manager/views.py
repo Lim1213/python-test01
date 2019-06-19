@@ -21,10 +21,12 @@ def CreateText(request):
 	if os.path.exists(title):
 		shutil.rmtree(title)
 	os.mkdir(title)
+
 	wf = open(os.getcwd()+'/template/01.基本情報.txt')
 	data1 = wf.read()  # ファイル終端まで全て読んだデータを返す
 	wf.close()
 	
+
 	data1 = data1.replace("｛案件区分｝",request.POST.get('itemDivision'))
 	data1 = data1.replace("｛システム名｝",request.POST.get('systemName'))
 	data1 = data1.replace("｛作業場所｝",request.POST.get('workPlace'))
@@ -63,5 +65,4 @@ def CreateText(request):
 			response = HttpResponse(fh.read(), content_type="application/vnd.ms-excel")
 			response['Content-Disposition'] = 'inline; filename="{fn}"'.format(fn=urllib.parse.quote(title+'.zip'))
 			return response
-			
 	raise Http404
