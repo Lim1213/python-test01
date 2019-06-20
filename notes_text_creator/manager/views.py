@@ -62,7 +62,7 @@ def CreateText(request):
 	if os.path.exists(file_path):
 		with open(file_path, 'rb') as fh:
 			response = HttpResponse(fh.read(), content_type="application/vnd.ms-excel")
-			response['Content-Disposition'] = 'inline; filename="{fn}"'.format(fn=urllib.parse.quote(filePath+'.zip'))
+			response['Content-Disposition'] = 'inline; filename="{fn}"'.format(fn=urllib.parse.quote(title+'.zip'))
 			return response
 			
 	raise Http404
