@@ -21,7 +21,7 @@ def CreateText(request):
 	path = os.getcwd()
 	if os.path.exists(filePath):
 		shutil.rmtree(filePath)
-	os.mkdir(filePath)
+	os.makedirs(filePath)
 	wf = open(os.getcwd()+'/template/01.基本情報.txt')
 	data1 = wf.read()  # ファイル終端まで全て読んだデータを返す
 	wf.close()
